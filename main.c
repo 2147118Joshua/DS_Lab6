@@ -1,161 +1,47 @@
-#include <stdio.h>
-#include<stdbool.h>
+#include<stdio.h>
 #include<time.h>
-void swap(int *a, int *b)
-{
-    int t = *a;
-    *a = *b;
-    *b = t;
-}
-// selection sort
-int selectionSort(int *arr, int size)
-{
-    int count = 0;
-    printf("\nSelection Sort Applied\n");
-    for (int i = 0; i < size; i++)
-    {
-        count++;
-        for (int j = i + 1; j < size; j++)
-        {
-            count++;
-            if (arr[i] > arr[j])
-            {
-                count++;
-                swap(&arr[i], &arr[j]);
-                count++;
-            }
-        }
-        count++;
-    }
-    count++;
-    return count;
-}
-
-// quick sort
-int calcPivot(int *arr, int start, int end)
-{
-    int pivot = arr[end];
-    int i = start - 1;
-    for (int j = start; j < (end - 1); j++)
-    {
-        if (arr[j] < pivot)
-        {
-            i++;
-            swap(&arr[j], &arr[i]);
-        }
-    }
-    swap(&arr[i + 1], &arr[end]);
-    return (i + 1);
-}
-int quickSort(int *arr, int start, int end)
-{
-    if (start < end)
-    {
-        int pivot = calcPivot(arr, start, end);
-        quickSort(arr, start, pivot - 1);
-        quickSort(arr, pivot + 1, end);
-    }
-    return 0;
-}
-// bubble sort
-int bubbleSort(int *arr, int n)
-{
-    int count=0;
-    int i, j;
-    bool swapped;
-    for (i = 0; i < n - 1; i++)
-    {
-        count++;
-        swapped = false;
-        count++;
-        for (j = 0; j < n - i - 1; j++)
-        {
-            count++;
-            if (arr[j] > arr[j + 1])
-            {
-                count++;
-                swap(&arr[j], &arr[j + 1]);
-                count++;
-                swapped = true;
-            }
-        }
-        count++;
-        count++;
-        if (swapped == false)
-            break;
-    }
-    count++;
-    return count;
-}
-// insertion sort
-int insertionSort(int *arr, int size)
-{
-    int count = 0;
-    printf("\nInsertion Sort Applied\n");
-    int i, element, j;
-    for ( i = 1; i < size; i++)
-    {
-        count++;
-        element = arr[i];
-        count++;
-        j = i - 1;
-        count++;
-        while (j >= 0 && arr[j] > element)
-        {
-            count++;
-            arr[j + 1] = arr[j];
-            count++;
-            j--;
-        }
-        count++;
-        arr[j + 1] = element;
-        count++;
-    }
-    count++;
-    return count;
-}
-void display(int *arr, int size)
-{
-    printf("\nArray: ");
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d\t", arr[i]);
-    }
-    printf("\n");
-}
+#include <stdlib.h>
 int main()
 {
-    time_t t;
-    time(&t);
+// generating 100 randam elements in range 1 to 200
+srand(time(0));
+int i,j, data, x,k;
+float avg_success;
+float av;
+int s_count= 0;
+int ss_count= 0;
+int a[100];
+for(i = 0; i<100; i++)
+{
+data= (srand() % ((200  - 1)+1));
+        printf(" %d ", data);
+  a[j] = data;
+  }
+  
+  
+    x= (srand() % ((200  - 1)+1));
+    printf("\n\n element to be searched is %d", x);
+    for(k=0;k<100;++k)
+    {
+s_count++;
+        if(a[k]==x)
+        ss_count++;
+            break;
+}
+    if(k<100)
+        printf("\n\nElement found at index %d",k);
+    else
+        printf("\n\nElement not found");
+  
 
-    int array[10] = {2, 5, 6, 3, 9, 2, 7, 5, 9};
-    display(array, 10);
-    // printf("\n\n\n\n\nTime Before: %s",ctime(&t));
-    int count2 = selectionSort(array, 10);
-    printf("\nCount: %d\n", count2);
-    // printf("\nTime After: %s",ctime(&t));
+printf("\n\n\n number of searches completed %d", s_count);
+printf("\n\nThe number of successful searches %d" , ss_count);
+avg_success = (ss_count / s_count) *100;
+av= (ss_count / s_count) ;
 
-    int array1[10] = {2, 5, 6, 3, 9, 2, 7, 5, 9};
-    printf("\n\n\n\n\nQuick Sort\n");
-    // printf("Time Before: %s",ctime(&t));
-    int count1 = quickSort(array1, 0, 9);
-    // printf("\nTime After: %s",ctime(&t));
-    printf("\nCount: %d\n", count1);
+printf("\n\n\n The average number of tests per search %d", av);
 
-    int array2[10] = {2, 5, 6, 3, 9, 2, 7, 5, 9};
-    printf("\n\n\n\n\n\n");
-    // printf("\n\n\n\n\n\n\n\nTime Before: %s",ctime(&t));
-    int count = insertionSort(array2, 10);
-    // printf("\nTime After: %s",ctime(&t));
-    printf("\nCount: %d\n", count);
-    // display(array2, 10);
+  printf("\n\nThe percentage of successful searches %f" , avg_success);
 
-    int array3[10] = {2, 5, 6, 3, 9, 2, 7, 5, 9};
-    printf("\n\n\n\n\n\n\nBubble Sort:\n");
-    // printf("Time Before: %s",ctime(&t));
-    int count3 = bubbleSort(array3, 10);
-    // printf("\nTime After: %s",ctime(&t));
-    printf("\nCount: %d\n", count3);
-    display(array3, 10);
-    
+   return 0;
 }
