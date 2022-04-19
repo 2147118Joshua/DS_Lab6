@@ -1,47 +1,43 @@
-#include<stdio.h>
-#include<time.h>
+#include <stdio.h>
 #include <stdlib.h>
-int main()
+#include <time.h>
+ 
+int main(void)
 {
-// generating 100 randam elements in range 1 to 200
-srand(time(0));
-int i,j, data, x,k;
-float avg_success;
-float av;
-int s_count= 0;
-int ss_count= 0;
-int a[100];
-for(i = 0; i<100; i++)
-{
-data= (srand() % ((200  - 1)+1));
-        printf(" %d ", data);
-  a[j] = data;
-  }
-  
-  
-    x= (srand() % ((200  - 1)+1));
-    printf("\n\n element to be searched is %d", x);
-    for(k=0;k<100;++k)
-    {
-s_count++;
-        if(a[k]==x)
-        ss_count++;
-            break;
-}
-    if(k<100)
-        printf("\n\nElement found at index %d",k);
-    else
-        printf("\n\nElement not found");
-  
-
-printf("\n\n\n number of searches completed %d", s_count);
-printf("\n\nThe number of successful searches %d" , ss_count);
-avg_success = (ss_count / s_count) *100;
-av= (ss_count / s_count) ;
-
-printf("\n\n\n The average number of tests per search %d", av);
-
-  printf("\n\nThe percentage of successful searches %f" , avg_success);
-
-   return 0;
+    int a[100];
+    int i;
+    int j;
+    int c=0;
+    int p=0;
+    int k=1;
+    int sum=0;
+    int ct=0;
+    float per;
+ 
+    srand(time(NULL));
+    for (i = 0; i < 100; i++)
+        a[i] = (rand() % (200 - 0 + 1)) + 0;
+        
+    for(i = 0; i<100; i++)
+        {
+            int num;
+            num= (rand() % (200 - 0 + 1)) + 0;
+            for(j = 0; j<100; j++){
+                if(a[j]==num){
+                    c++;
+                    break;
+                }
+                k++;
+                p++;
+            }
+            sum=sum+k;
+            ct++;
+            k=0;
+        }
+    printf("\nNumber of searches Completed>>%d\n",p);
+    printf("Number of successful searches>>%d\n",c);
+    per=(float)c/p * 100;;
+       printf("percentage of successful searches>>%.1f percentage\n",per);
+    printf("Average number of searches>>%d\n",sum/ct);
+    return 0;
 }
